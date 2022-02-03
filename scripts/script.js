@@ -1,50 +1,61 @@
-// $ = jQuery's way of naming its stuff.
-// $( ... ) = what's inside () is the "object" we are messin with
-// .ready() = method of $jQ
-// .ready( ... ) = argument/parameter passed to that method
-// function(){} in the method is an IIFE = Immediately Invoked F/n Expresson
 $(document).ready(function () {
-  // alert("page is ready");
   console.log("doc is ready");
-  
  
-  let wowCount = 0;   
-  let wowMsg; 
-  
-//   $("li") 
-//   $('#specificID')
-// $('.someClass ')
+  let revName; 
 
 
-  $("#dogeDiv").draggable(
-    {
-      containment: "#dogeHouse",
-      scroll: false,
-      stop: function () {
-        // wowCount = wowCount + 1; 
-        wowCount++; //same as line 19 
-        console.log("we are starting! " + "here is wowCount:" + wowCount);
-        
-        if (wowCount <= 4) {
-          wowMsg = "your wow is weak sauce";
-        }
-        else if (4 < wowCount < 8)
-        {
-          wowMsg = "your wow is whatever";
-        }
-        
-        $("#wowOutput").text(wowMsg + "(" + wowCount + ")");
-    }
-  }
-  );
+  $
+    ("#btnGetFacts").click(function (){
 
+      // handle it if input is blank
+
+      let userName = $("#userName").val();
+      let coolFacts = generateCoolNameFacts(userName); 
+
+      console.log('you clicked the button');
+      console.log('from ln 12', generateCoolNameFacts(userName));
+      
+      $("#coolNameFactsOutput").html(coolFacts);
   
 
-  let userGreeting = "Hello there, "; 
 
-  $("button").click(function () {
-    userGreeting += $("#fname").val();
+    });
 
-    $("#greetingOutput").text(userGreeting);
-  });
+
 });
+
+function generateCoolNameFacts(userName) {
+  let coolFacts = ''; 
+  
+  coolFacts = nameLength(userName);
+  coolFacts += " <br> " + nameStart(userName);
+  coolFacts += "<h3> " + nameEnd(userName) + "</h3>";
+  coolFacts += "<h2>" + reverseName(userName) + "</h2>"
+
+  console.log("initialized the'm coolFacts variable: " + coolFacts); 
+
+  return coolFacts;
+}
+
+function nameLength(name) {
+  return "Your name is " + name.length + " letters long!"; 
+}
+
+function nameStart(name) {
+  return "the first letter of your name is " + name[0]
+}
+
+function nameEnd(name) {
+  
+  let lastIndex = name.length - 1
+
+  return "the last letter of your name is " + name[lastIndex]
+}
+
+function reverseName(name) {
+  
+  let arrName = name.split(); 
+
+  revName = arrName.reverse();
+     
+}
