@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function () {  //iife
   console.log("doc is ready");
  
   let revName; 
